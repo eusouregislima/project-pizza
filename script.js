@@ -15,7 +15,7 @@ let pizzaItem = c(".models .pizza-item").cloneNode(true);
 
 pizzaItem.setAttribute("data-key", index)
 pizzaItem.querySelector(".pizza-item--img img").src = item.img
-pizzaItem.querySelector(".pizza-item--price").innerHTML = `R$ ${item.price860.toFixed(2)}`;
+pizzaItem.querySelector(".pizza-item--price").innerHTML = `R$ ${item.price.toFixed(2)}`;
 pizzaItem.querySelector(".pizza-item--name").innerHTML = item.name;
 pizzaItem.querySelector(".pizza-item--desc").innerHTML = item.description;
 pizzaItem.querySelector('a').addEventListener("click", (e)=>{
@@ -27,7 +27,7 @@ pizzaItem.querySelector('a').addEventListener("click", (e)=>{
   c(".pizzaBig img").src = pizzaJson[key].img;
   c(".pizzaInfo h1").innerHTML = pizzaJson[key].name;
   c(".pizzaInfo--desc").innerHTML = pizzaJson[key].description;
-  c(".pizzaInfo--actualPrice").innerHTML = `R$ ${pizzaJson[key].price860.toFixed(2)}`;
+  c(".pizzaInfo--actualPrice").innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)}`;
   c(".pizzaInfo--size.selected").classList.remove("selected");
   ca(".pizzaInfo--size").forEach((size, sizeIndex)=>{
     if(sizeIndex === 2){
@@ -143,7 +143,7 @@ if(cart.length > 0){
 
   for(let i in cart){
     let pizzaItem = pizzaJson.find((item)=>item.id === cart[i].id)
-    subtotal =+ pizzaItem.price860 * cart[i].qt;
+    subtotal += pizzaItem.price * cart[i].qt;
 
     let cartItem = c(".models .cart--item").cloneNode(true);
 
